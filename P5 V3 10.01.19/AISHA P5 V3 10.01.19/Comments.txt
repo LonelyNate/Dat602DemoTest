@@ -1,0 +1,5 @@
+RGB Colours
+
+Black - 0,0,0
+Grey - 150,150,150
+White - 255,255,255
