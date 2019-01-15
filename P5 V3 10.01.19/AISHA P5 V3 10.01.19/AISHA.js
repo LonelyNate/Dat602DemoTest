@@ -7,7 +7,7 @@ var personpage = false;
 var placepage = false;
 var locateper = false;
 var displayWidth = 800;
-var displayHeight = 600;
+var displayHeight = 400;
 //var startInt = 0; //int for startMenu
 //var homePageInt = 0; //int for homePage
 var s = 100; // stores the size of the icon
@@ -40,9 +40,9 @@ var b8;
 
 
 function preload() { //pre caches data into specific contaniers this helps minimize loading times.
-LOGOimg = createImg('LOGO.jpg');
+LOGOimg = createImg('AISHALogo2.png');
 LOGOimg.hide();
-startpage = true;
+	startpage = true;
 	icon[0] = createImg('Person_DAD.jpg');
   icon[1] = createImg('Person_Child_Son.jpg');
   icon[2] = createImg('Person_MUM.jpg');
@@ -61,9 +61,7 @@ startpage = true;
 
 function setup() {
     var displayWidth = 800;
-    var displayHeight = 600;
-  var url = 'mongodb://<dbuser>:<dbpassword>@ds048279.mlab.com:48279/nate_test'
-	loadJSON(url, drawData); //mongodb://<dbuser>:<dbpassword>@ds255754.mlab.com:55754/dat602_mlab
+    var displayHeight = 400;
   button_choose = createButton('choose');
   button_Locate = createButton('Locate');
   backbutton = createButton('Back');
@@ -92,7 +90,7 @@ function setup() {
 
 function draw() {
 
-  var centerX = createCanvas(800, 600);
+  var centerX = createCanvas(800, 400);
   //places frame rate in bottom right corner
 
   fill(0);// Sets fill colour to black.
@@ -134,6 +132,7 @@ function draw() {
   if (locateper === true)
   {
     locate();
+    backbutton.show();
   }
     rect(25, 25, 50, 50);
 }
@@ -208,7 +207,7 @@ function startScreen() {
     background(1,150,200);
     textSize(50);
     //text('Welcome to AISHA', 200, 300); // original text logo location.
-    image(LOGOimg, 175, 220); // dispays the logo at given location.
+    image(LOGOimg, 80, 55); // dispays the logo at given location.
     textSize(20);
     //var startBtn = document.getElementById('startBtn');
 
@@ -225,18 +224,18 @@ function MainMenu(){
   button_6.hide();
   button_7.hide();
   button_8.hide();
-  	image(LOGOimg, 175, 10); // dispays the logo at given location.
-  	fill(50, 50, 50);
+  	image(LOGOimg, 80, 10); // dispays the logo at given location.
+  	fill(0);
     strokeWeight(2);
     stroke(10)
    // ellipse(300, 150, 100, 100);
   	button_Locate.show();
   	button_choose.show();
-		button_choose.position(100, 205);
+		button_choose.position(250, 300);
 		button_choose.mousePressed(ChoosePage);
 
 
-	  button_Locate.position(250, 205);
+	  button_Locate.position(450, 300);
  		button_Locate.mousePressed(locatePage);
 
   	var fps = parseInt(frameRate(), 10);
@@ -263,27 +262,27 @@ function secondScreen() {
  		image(icon[2], 250, 100,s,s);
 
     //Circle 1
-    fill(50, 50, 50);
+    fill(0);
     strokeWeight(2);
     stroke(10);
     /* x,y,shape width,shape height */
     //ellipse(150 , 150, 100, 100);
 
     //Circle 2
-    fill(50, 50, 50);
+    fill(0);
     strokeWeight(2);
     stroke(10)
    // ellipse(300, 150, 100, 100);
 
 
     //Circle 3
-    fill(50, 50, 50);
+    fill(0);
     strokeWeight(2);
     stroke(10);
     //ellipse(450, 150, 100, 100);
 
     //Circle 4
-    fill(50, 50, 50);
+    fill(0);
     strokeWeight(2);
     stroke(10);
     ellipse(600, 150, 100, 100);
@@ -304,7 +303,7 @@ function ThirdScreen() {
     text('where are you going', 180, 50);
     //strokeWeight(2); /*Stroke weight for all shapes */
     //Circle 1
-    fill(50, 50, 50);
+    fill(0);
     strokeWeight(2);
     stroke(10);
     /* x,y,shape width,shape height */
@@ -323,6 +322,7 @@ function ThirdScreen() {
 
 function locate()
 {
+  	var dix = 200
   	button_choose.hide();
   	button_Locate.hide();
   	button_1.hide();
@@ -333,17 +333,19 @@ function locate()
     button_6.hide();
     button_7.hide();
     button_8.hide();
+ 	  backbutton.position(700, 500);
+		backbutton.mousePressed(bbutton);
   background(1, 150, 200);
     textSize(50);
     text('Person is located', 180, 50);
-  	fill(50, 50, 50);
+  	fill(0);
     strokeWeight(2);
     stroke(10);
     /* x,y,shape width,shape height */
    // ellipse(150, 150, 100, 100);
   if (b1 === 1)
       {
-    			image(icon[0], 200, 100,s,s);
+    			image(icon[0], dix, 100,s,s);
       }
   if (b2 === 1)
       {
@@ -355,23 +357,23 @@ function locate()
       }
   if (b4 === 1)
       {
-    			image(icon[3], 150, 300,s,s);
+    			image(icon[3], 200, 300,s,s);
       }
   if (b5 === 1)
       {
-    			image(icon[5], 200, 300,s,s);
+    			image(icon[5], 350, 300,s,s);
       }
   if (b6 === 1)
       {
-    			image(icon[6], 250, 300,s,s);
+    			image(icon[6], 500, 300,s,s);
       }
   if (b7 === 1)
       {
-    			image(icon[7], 300, 300,s,s);
+    			image(icon[7], 200, 500,s,s);
       }
    if (b8 === 1)
       {
-    			image(icon[4], 350, 300,s,s);
+    			image(icon[4], 350, 500,s,s);
       }
   var fps = parseInt(frameRate(), 10);
     textSize(20);
@@ -423,24 +425,21 @@ select screen and how they react to inputs.
 }
 
 function bbutton()	{
+  if (placepage === true){
+   	placepage = false;
+    personpage = true;
 
-    startpage = true;
-  	placepage = false;
-
-}
-function drawData(data) {
-  console.log(data); // inspect the JSON
-  background(0);
-
-  //Run all elements of the database and visualize them (separate for value1, 2, 3)
-  for (var i = 0; i < data.length; i++) {
-    fill(0, 255, 255, 200);
-    ellipse(random(width), random(height), data[i].value1, data[i].value1);
-
-    fill(255, 0, 255, 200);
-    ellipse(random(width), random(height), data[i].value2, data[i].value2);
-
-    fill(255, 255, 0, 200);
-    ellipse(random(width), random(height), data[i].value3, data[i].value3);
   }
+
+  if (personpage === true)
+  {
+  	 personpage = false;
+     chooseScreen = true;
+  }
+
+  if (locateper === true)
+  	{
+			locateper = false;
+      startpage = true;
+    }
 }
